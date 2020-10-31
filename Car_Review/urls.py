@@ -25,7 +25,7 @@ app_name = 'blogApp'
 urlpatterns = [
     path('', views.IndexPage, name="HomePage"),
     path('blog', views.BlogPage, name="BlogPage"),
-     path('blog/<int:blog_id>/', views.PostPage, name='detail'),
+     path('<int:blog_id>/', views.PostPage, name='detail'),
     # path('Writer/',include('blogApp.urls')),
     path('admin/', admin.site.urls),
 ]

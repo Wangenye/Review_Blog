@@ -35,7 +35,7 @@
     <header class="header">
         <!-- Main Navbar-->
         <nav class="navbar navbar-expand-lg" style=" width: 100%;">
-            <div class="search-area">
+            <!-- <div class="search-area">
                 <div class="search-area-inner d-flex align-items-center justify-content-center">
                     <div class="close-btn"><i class="icon-close"></i></div>
                     <div class="row d-flex justify-content-center">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="container">
                 <!-- Navbar Brand -->
                 <div class="navbar-header d-flex align-items-center justify-content-between">
@@ -108,7 +108,6 @@
                     <div class="text-inner d-flex align-items-center">
                         <div class="content">
                             <header class="post-header">
-                                <!-- <div class="category"><i>{{ blog.description}}</i></div> -->
                                 <a href="{% url 'detail' blog.id%}">
                                     <h2 class="h4">{{blog.title}}</h2>
                                 </a>
@@ -120,11 +119,11 @@
                             </p>
                             <footer class="post-footer d-flex align-items-center">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div>
+                                    <!-- <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div> -->
                                     <div class="title"><span>{{ blog.user.username }}</span></div>
                                 </a>
                                 <div class="date"><i class="icon-clock"></i> {{ blog.date }}</div>
-                                <div class="comments"><i class="icon-comment"></i>12</div>
+                                <div class="comments"><i class="icon-comment"></i>--{{ blog.comments.count}}--</div>
                             </footer>
                         </div>
                     </div>
@@ -164,45 +163,15 @@
                             <div class="date">{{ blog.date }}</div>
                             <div class="category"><a href="#">Business</a></div>
                         </div>
-                        <a href="post.html">
+                        <a href="{% url 'detail' blog.id%}">
                             <h3 class="h4">{{blog.title}}</h3>
                         </a>
-                        <p class="text-muted">{{ blog.post }}
+                        <p class="text-muted">{{ blog.post|striptags|truncatechars:120|linebreaks }}
 
                         </p>
                     </div>
                 </div>
                 {% endfor %}
-                <!-- <div class="post col-md-4">
-                    <div class="post-thumbnail">
-                        <a href="post.html"><img src="{% static 'img/blog-2.jpg' %}" alt="..." class="img-fluid"></a>
-                    </div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Technology</a></div>
-                        </div>
-                        <a href="post.html">
-                            <h3 class="h4">Diversity in Engineering: Effect on Questions</h3>
-                        </a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
-                <div class="post col-md-4">
-                    <div class="post-thumbnail">
-                        <a href="post.html"><img src="{% static 'img/blog-3.jpg' %}" alt="..." class="img-fluid"></a>
-                    </div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Financial</a></div>
-                        </div>
-                        <a href="post.html">
-                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                        </a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
