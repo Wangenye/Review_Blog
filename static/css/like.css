@@ -1,5 +1,14 @@
 /* your styles go here */
 
+#rounded {
+    border-radius: 20px;
+}
+
+footer.main-footer .copyrights {
+    background: #090909;
+    margin-top: 0px !important;
+}
+
 .rating {
     display: inline-block;
     width: 100%;

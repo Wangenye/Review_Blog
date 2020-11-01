@@ -39,6 +39,8 @@ def PostPage(request,blog_id):
 
     return render(request, 'blogApp/post.html',{'blog':blog,'blogs':blogs,'comment_form':comment_form})
 
+def contactPage(request):
+    return render (request,'blogApp/contact.html')
 
 #    if request.method == "POST":
 #         addcomment = CommentForm(request.POST)
