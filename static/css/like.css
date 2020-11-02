@@ -120,8 +120,9 @@ footer.main-footer .copyrights {
 }
 
 .social-btns {
-    height: 50px;
-    margin: auto;
+    /* height: 50px; */
+    /* margin: auto; */
+    display: flex;
     font-size: 0;
     text-align: center;
     position: relative;
@@ -160,4 +161,46 @@ footer.main-footer .copyrights {
 .social-btns .btn .fa {
     font-size: 38px;
     vertical-align: middle;
+}
+
+@media screen and (max-width: 780px) {
+    #primary {
+        max-width: 100%;
+    }
+    #secondary {
+        max-width: 100%;
+        margin-left: 0%;
+    }
+    #change {
+        /* display: none !important; */
+        position: relative;
+        max-width: 100%;
+    }
+    .Share {
+        max-width: 100%;
+        display: grid;
+        left: 0;
+        position: relative;
+    }
+    .social-btns {
+        /* height: auto; */
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        font-size: 0;
+        text-align: center;
+        position: relative;
+        /* top: 0; */
+        /* bottom: 0; */
+        margin: 20px;
+        padding: 20px;
+        left: 0;
+        margin-left: -40px;
+    }
+    .social-btns .btn:focus:before,
+    .social-btns .btn:hover:before {
+        top: -10%;
+        /* left: -10%; */
+    }
 }
