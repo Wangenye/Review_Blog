@@ -1,0 +1,141 @@
+<div class="container">
+    <div class="row" id="move">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8">
+            <div class="container">
+                <div class="post-single">
+                    <div class="post-thumbnail"><img src="{{ blog.image.url }}" alt="..." class="img-fluid"></div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="category">{{ blog.description }}</div>
+                        </div>
+                        <h1>{{ blog.title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                        <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+                            <a href="#" class="author d-flex align-items-center flex-wrap">
+                                <!-- <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div> -->
+                                <div class="title"><span>{{ blog.author }}</span></div>
+                            </a>
+                            <div class="d-flex align-items-center flex-wrap">
+                                <div class="date"><i class="icon-clock"></i> {{ blog.date }}</div>
+                                <!-- <div class="views"><i class="icon-eye"></i> 500</div> -->
+                                <div class="comments meta-last"><i class="icon-comment"></i>({{ blog.comments.count}})</div>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <p class="lead">
+                                {{blog.post}}
+                            </p>
+                            <div class="rating">
+                                <!-- Thumbs up -->
+                                <div class="like grow">
+                                    <i class="fa fa-thumbs-up fa-3x like" aria-hidden="true"></i>
+                                </div>
+                                <!-- Thumbs down -->
+                                <div class="dislike grow">
+                                    <i class="fa fa-thumbs-down fa-3x like" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- </div> -->
+
+                        <div class="Share">
+                            <h2 id="change">Share This Post ::</h2>
+
+                            <div class=" social-btns">
+                                <a target="blank" class="btn facebook" href="http://www.facebook.com/sharer/sharer.php?u=https://kenya-car-reviewblog.herokuapp.com{% url 'detail' blog.id%}"><i class="fa fa-facebook"></i></a>
+                                <a target="blank" class="btn twitter" href="https://twitter.com/intent/tweet?url=https://kenya-car-reviewblog.herokuapp.com{% url 'detail' blog.id%}"><i class="fa fa-twitter"></i></a>
+                                <a target="blank" class="btn instagram" href="https://www.instagram.com/sharer.php?u=https://kenya-car-reviewblog.herokuapp.com{% url 'detail' blog.id%}"><i class="social_facebook"><i class="fa fa-instagram"></i></a>
+                                <a target="blank" class="btn whatsapp" href="#"><i class="fa fa-whatsapp"></i></a>
+                                <a target="blank" class="btn skype" href="http://www.linkedin.com/shareArticle?url=https://kenya-car-reviewblog.herokuapp.com{% url 'detail' blog.id%}"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="post-comments">
+                            {% if not blog.comments.all %}
+                            <header>
+
+                                <h3 class="h6"> Be the First to Add Comment<span class="no-of-comments">--{{ blog.comments.count}}--</span></h3>
+                                {% else %}
+                                <h3 class="h6">Posted Comments<span class="no-of-comments">({{ blog.comments.count}})</span></h3>
+
+                            </header>
+                            {% for comment in blog.comments.all %}
+                            <div class="comment">
+                                <div class="comment-header d-flex justify-content-between">
+                                    <div class="user d-flex align-items-center">
+                                        <!-- <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div> -->
+                                        <div class="title"><strong>{{ comment.name }}</strong><span class="date">{{ comment.created_on}}</span></div>
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>{{ comment.body }}.</p>
+                                </div>
+
+                            </div>
+                            {% endfor %} {% endif %}
+                        </div>
+
+                        <div class="add-comment">
+                            <header>
+                                <h3 class="h6">Leave a Comment</h3>
+                            </header>
+                            <div class="card-body">
+                                <!-- <div class="alert alert-success" role="alert">
+                                    Your comment is awaiting moderation
+                                </div <h3>Leave a comment</h3> -->
+                                <form method="POST" class="commenting-form">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="name" id="username" placeholder="Name" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="email" name="email" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <textarea name="body" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- <form method="post" style="margin-top: 1.3em;">
+                                    {{ comment_form.as_p }}
+                                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                                </form> -->
+
+                            </div>
+                            <!-- </div>-->
+                        </div>
+                    </div>
+                </div>
+        </main>
+        <aside class="col-lg-4">
+            <!-- Widget [Latest Posts Widget]        -->
+            <div class="widget latest-posts">
+                <header>
+                    <h3 class="h6">Latest Posts</h3>
+                </header>
+                <div class="blog-posts">
+                    {% for blog in blogs %}
+                    <a href="{% url 'detail' blog.id%}">
+                        <div class="item d-flex align-items-center">
+                            <div class="image"><img src="{{ blog.image.url }}" alt="..." class="img-fluid"></div>
+                            <div class="title"><strong>{{ blog.title }}</strong>
+                                <div class="d-flex align-items-center">
+                                    <!-- <div class="views"><i class="icon-eye"></i> 500</div> -->
+                                    <div class="comments"><i class="icon-comment"></i>({{ blog.comments.count}})</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </aside>
+        </div>
+    </div>
+</div>
