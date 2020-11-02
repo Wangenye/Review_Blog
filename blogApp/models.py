@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import related
 from django.utils import timezone
 from django.contrib.auth.models import User
 # from django import forms
@@ -35,6 +36,8 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment {} by {}'.format(self.post.title, self.name)
 
+class AboutSite(models.Model):
+    name = models.CharField(max_length=100)
 # class Like(models.Model):
 #     likes =models.ManyToManyField( Blog,related_name='post_likes', blank=True,)
     
