@@ -15,6 +15,7 @@ class Blog(models.Model):
     image = models.ImageField(upload_to='Images')
     likes= models.IntegerField(default=0)
     dislikes= models.IntegerField(default=0)
+    post_views = models.ImageField(default=0,null=True,blank=True)
 
     def __str__(self):
         return self.title
@@ -40,4 +41,31 @@ class AboutSite(models.Model):
     name = models.CharField(max_length=100)
 # class Like(models.Model):
 #     likes =models.ManyToManyField( Blog,related_name='post_likes', blank=True,)
-    
+
+class Newsletter(models.Model):
+    email = models.EmailField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.email
+class Contactus(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField(max_length=300)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Email Sent by {} On {}".format(self.name,self.timestamp)
+
+class ProfileCard(models.Model):
+    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="Profile/{}".format(name))
+    facebook= models.URLField(blank=True)
+    whatsapp = models.URLField(blank=True)
+    insta = models.URLField(blank=True)
+    twitter = models.URLField(blank=True)
+    github = models.URLField(blank=True)
+    linkedln = models.URLField(blank=True)
+
+    def __str__(self):
+        return  "{} a {}".format(self.name,self.title)

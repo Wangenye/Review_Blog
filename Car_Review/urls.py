@@ -28,6 +28,7 @@ urlpatterns = [
      path('<int:blog_id>/', views.PostPage, name='detail'),
       path('contact_us/', views.contactPage, name="contactPage"),
     # path('Writer/',include('blogApp.urls')),
+    path('about_us/',views.AboutPage, name = "AboutPage"),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

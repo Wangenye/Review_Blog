@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogApp',
-    # 'hitcount',
+    # 'mailchimp',
+    # 'sendemail.apps.SendemailConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,22 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+MAILCHIMP_API_KEY = '312e272f0d2c9ccee5a5f8bcbbcea584-us2'
+MAILCHIMP_DATA_CENTER = 'us2'
+MAILCHIMP_SUBSCRIBE_LIST_ID = 'b9745235a3'
+
+
+
+# config/settings.py
+SENDGRID_API_KEY = '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'
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_SANDBOX_MODE_IN_DEBUG=True
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# echo to stdout or any o
+# ther file-like object that is passed to the backend via the stream kwarg.
+SENDGRID_ECHO_TO_STDOUT=True
+
+##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

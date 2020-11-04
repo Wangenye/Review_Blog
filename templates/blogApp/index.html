@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom icon font-->
     <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
     <!-- Google fonts - Open Sans-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <!-- Fancybox-->
@@ -67,7 +69,7 @@
                         </li>
                         <li class="nav-item"><a href="{% url 'BlogPage' %}" class="nav-link ">Blog</a>
                         </li>
-                        <li class="nav-item"><a href="" class="nav-link ">About</a>
+                        <li class="nav-item"><a href="{% url 'AboutPage' %}" class="nav-link ">About</a>
                         </li>
                         <li class="nav-item"><a href="{% url 'contactPage' %}" class="nav-link ">Contact</a>
                         </li>
@@ -101,10 +103,11 @@
             </div>
         </div>
     </section>
+    <!-- {{ blogs.count}} -->
     <section class="featured-posts no-padding-top">
         <div class="container">
             <!-- Post-->
-            {% for blog in blogs %}
+            {% for blog in sorted_blog %}
             <div class="row d-flex align-items-stretch " id="rounded" style="margin: 20px;" ">
                 <div class="image col-lg-5 rounded "><img src="{{ blog.image.url }} " alt="... "></div>
                 <div class="text col-lg-7 ">
@@ -135,8 +138,10 @@
             </div>
             {% endfor %}
 
-
         </div>
+        
+            <a style="position: relative; display: flex; box-sizing: border-box; padding: 0 30px; line-height: 60px; left: 20%; width: 200px; font-weight: 600; " id="all " class="btn btn-outline-primary " href="{% url 'BlogPage' %} ">All Blogs</a>
+        
     </section>
     <!-- Divider Section-->
     <section style="background: url(https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-size: cover; background-position: center bottom " class="divider ">
@@ -156,7 +161,7 @@
                 <p class="text-big ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </header>
             <div class="row ">
-                {% for blog in blogs %}
+                {% for blog in sorted_blog %}
                 <div class="post col-md-4 ">
                     <div class="post-thumbnail ">
                         <a href="post.html "><img src="{{ blog.image.url }} " alt="... " class="img-fluid "></a>
@@ -164,7 +169,7 @@
                     <div class="post-details ">
                         <div class="post-meta d-flex justify-content-between ">
                             <div class="date ">{{ blog.date }}</div>
-                            <div class="category "><a href="# ">Business</a></div>
+                            <div class="category "><a href="# ">{{ blog.description }}</a></div>
                         </div>
                         <a href="{% url 'detail' blog.id%} ">
                             <h3 class="h4 ">{{blog.title}}</h3>
@@ -184,11 +189,12 @@
             <div class="row ">
                 <div class="col-md-6 ">
                     <h2>Subscribe to Newsletter</h2>
-                    <p class="text-big ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="text-big ">Sign up for our newsletter to get latest updates On the Car Reviews.</p>
                 </div>
                 <div class="col-md-8 ">
                     <div class="form-holder ">
-                        <form action="# ">
+                        <form   method="POST ">
+                            <!-- {{ form.as_p}} -->
                             <div class="form-group ">
                                 <input type="email " name="email " id="email " placeholder="Type your email address ">
                                 <button type="submit " class="submit ">Subscribe</button>
@@ -199,6 +205,10 @@
             </div>
         </div>
     </section>
+    <div class = "subscribe_form ">
+    
+   
+</div>
     {% endblock %}
     <!-- Gallery Section-->
     <!-- <section class="gallery no-padding ">

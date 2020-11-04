@@ -21,6 +21,7 @@
                                 <div class="views"><i class="icon-eye"></i> </div>
                                 <div class="comments meta-last"><i class="icon-comment"></i>--{{ blog.comments.count}}--</div>
                             </div>
+                            {{blog.post_views}}
                         </div>
                         <div class="post-body">
                             <p class="lead">
@@ -147,7 +148,7 @@
                     <h3 class="h6">Latest Posts</h3>
                 </header>
                 <div class="blog-posts">
-                    {% for blog in blogs %}
+                    {% for blog in latest_blogs %}
                     <a href="{% url 'detail' blog.id%}">
                         <div class="item d-flex align-items-center">
                             <div class="image"><img src="{{ blog.image.url }}" alt="..." class="img-fluid"></div>

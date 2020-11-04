@@ -1,4 +1,4 @@
- {% load static%}
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +33,8 @@
                     <img src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="IMG">
                 </div>
 
-                <form action="{% url 'HomePage' %}" class="contact100-form validate-form" method="POST">
+                <form method="POST">
+                    {% csrf_token %}
                     <span class="contact100-form-title">
 						Get in touch
 					</span>
@@ -47,7 +48,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <input class="input100" type="email" name="email" placeholder="Email">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
