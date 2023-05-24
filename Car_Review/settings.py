@@ -26,9 +26,9 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = '3*ed87!e7)tqvuf#8me_%h-h9^m7+v3uf0uc#72r6d=3#bc&x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+
 ALLOWED_HOSTS = [' localhost', '127.0.0.1', 'kenya-car-reviewblog.herokuapp.com','*']
 
 
